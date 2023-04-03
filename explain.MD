@@ -78,9 +78,7 @@ luaCopy code    ; Calculate length of input string
 
 This block of code calculates the length of the input string by counting the number of characters until the null terminator.
 
-The `mov`
-
-1 / 1![](data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2730%27%20height=%2730%27/%3e)![Mangat Toor](/_next/image?url=https%3A%2F%2Flh3.googleusercontent.com%2Fa%2FAGNmyxZh6RKjfqLhiJ1djXSU4fVcre6ufhcn5z13yAa7Xg%3Ds96-c&w=64&q=75)continue1 / 1!instruction sets the value of the `esi` register to 0, which will be used to index into the `buffer` variable.
+The `mov` instruction sets the value of the `esi` register to 0, which will be used to index into the `buffer` variable.
 
 The `count_loop` label marks the beginning of a loop. The `cmp` instruction compares the byte at the current index of the `buffer` variable with 0, the null terminator. If the bytes are equal, we jump to the `print_input` label. Otherwise, we increment the value of `esi` and jump back to the beginning of the loop.
 
