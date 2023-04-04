@@ -1,5 +1,5 @@
 section .data
-    prompt db "Enter a string: ", 0
+    prompt db "Enter your name: ", 0
     buffer resb 256
     len equ 256
     newline db 10
