@@ -5,7 +5,7 @@ section .data
     newline db 10
 
 section .word
-prefix db "Your name is: ", 0
+prefix db "Your name is ", 0
     len_prefix equ $-prefix
 
 section .text
