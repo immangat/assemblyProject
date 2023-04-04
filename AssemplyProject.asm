@@ -4,6 +4,10 @@ section .data
     len equ 256
     newline db 10
 
+section .word
+prefix db "Your name is: ", 0
+    len_prefix equ $-prefix
+
 section .text
     global _start
 
@@ -30,14 +34,20 @@ _start:
         inc esi
         jmp count_loop
     
-    ; Display input
+    ; Display input with "Your name is: " prefix
     print_input:
+    mov eax, 4
+    mov ebx, 1
+    mov ecx, prefix
+    mov edx, len_prefix
+    int 0x80
+
     mov eax, 4
     mov ebx, 1
     mov ecx, buffer
     mov edx, esi
     int 0x80
-    
+
     ; Print newline
     mov eax, 4
     mov ebx, 1
