@@ -156,6 +156,37 @@ II. Overview of the Code
 
 III. Breakdown of the Code
 
+Mangat's Part 
+-------------------------------------------------------------------------------------
+
+Let's take a closer look at the code:
+
+
+`section .data     prompt db "Enter your name: ", 0     buffer resb 256     len equ 256     newline db 10  section .word prefix db "Your name is ", 0     len_prefix equ $-prefix  section .text     global _start  _start:     ; Display prompt     mov eax, 4     mov ebx, 1     mov ecx, prompt     mov edx, len_prompt     int 0x80`
+
+The first section of the code, `.data`, is where we define our variables. Here, we have defined three variables:
+
+*   `prompt`: This variable stores the message we want to display to the user asking them to enter their name.
+*   `buffer`: This variable reserves 256 bytes of memory for us to store the user's input.
+*   `newline`: This variable stores the character code for a new line, which we will use later to format our output.
+
+The second section of the code, `.word`, is where we define additional variables. In this case, we have defined a variable called `prefix` which stores the message we want to display to the user with their name. We have also defined a variable `len_prefix` which stores the length of the `prefix` variable.
+
+The third section of the code, `.text`, is where we define our actual program instructions. Here, we have defined a label called `_start` which marks the beginning of our program.
+
+The first instruction we use is `mov eax, 4`. This instruction moves the value 4 into the `eax` register. The `eax` register is used to specify the system call we want to make, and the value 4 corresponds to the `write` system call.
+
+The next instruction, `mov ebx, 1`, moves the value 1 into the `ebx` register. The `ebx` register is used to specify which file descriptor we want to write to, and the value 1 corresponds to standard output.
+
+The instruction `mov ecx, prompt` moves the memory address of the `prompt` variable into the `ecx` register. The `ecx` register is used to specify the buffer we want to write from.
+
+The instruction `mov edx, len_prompt` moves the value of `len_prefix` into the `edx` register. The `edx` register is used to specify the length of the data we want to write.
+
+Finally, the instruction `int 0x80` executes the system call. The `int` instruction is used to generate a software interrupt, and the value `0x80` specifies that we want to make a system call. The system call we specified earlier (`write`) is now executed, and the prompt is displayed to the user.
+
+In conclusion, this code snippet is a simple example of how Assembly language can be used to interact with the operating system and display a prompt to the user. While Assembly language may seem complex and daunting at first, it is a powerful tool for low-level programming and can be used to create efficient and fast-running programs.
+
+
 - Go through each section of the code (`.data`, `.text`, and the constant section) and explain their purpose.
 - Go through each line of code in the program and explain what it does.
 - Provide examples of how each system call is used.
